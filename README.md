@@ -22,7 +22,7 @@ Questo repository contiene notebook Colab per confrontare un **foundation model 
   - controlli su preprocessing / timestamp / interpolazione
   - analisi diagnostiche
  
-- **`baslinebandpower.ipynb`**  
+- **`baselinebandpower.ipynb`**  
   Scopo principale:
   - usare baseline bandpower / relative bandpower per capire quanti classi considerare e se il preprocessing è adeguato
   4 contesti:
