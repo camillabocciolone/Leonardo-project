@@ -11,7 +11,6 @@ Questo repository contiene notebook Colab per confrontare un **foundation model 
   - split subject-independent (recording-level / LOSO)
   - estrazione embedding EEGPT
   - feature FDA (PCA per-canale e PCA globale)
-  - [baseline bandpower / relative bandpower]
   - classificatore downstream (MLP) + confusion matrix
   - visualizzazioni (t-SNE/[UMAP])
 
@@ -22,6 +21,17 @@ Questo repository contiene notebook Colab per confrontare un **foundation model 
   - separazione task (Arithmetic vs Stroop)
   - controlli su preprocessing / timestamp / interpolazione
   - analisi diagnostiche
+ 
+- **`baslinebandpower.ipynb`**  
+  Scopo principale:
+  - usare baseline bandpower / relative bandpower per capire quanti classi considerare e se il preprocessing è adeguato
+  4 contesti:
+    1) preprocessing senza fare interpolazione e 4 classi
+    2) preprocessing con interpolazione e 4 classi
+    3) preprocessing senza fare interpolazione e 3 classi
+    4) preprocessing con interpolazione e 3 classi
+  - risulta che la combinazione migliore sia preprocessing senza fare interpolazione e 3 classi
+  - sicuramente si considerassero 2 classi sarebbe ancore migliore la predizione
 
 ---
 
