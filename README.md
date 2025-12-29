@@ -138,7 +138,52 @@ I notebook installano automaticamente (in Colab):
 * `einops`, `tqdm`
 * (opzionale) `umap-learn` per UMAP
 
+## idea  confronto
 
+1️⃣ Segnale EEG (finestre)
+Ogni finestra è un segnale nel tempo (8 canali × 1024 punti)
+Questo è il livello più “grezzo”
+2️⃣ FDA → FPC (questo è il cuore)
+Con l’FDA fai due cose distinte:
+a) FPC (le componenti)
+Sono funzioni del tempo
+Descrivono come il segnale può variare:
+oscillazioni lente
+oscillazioni più rapide
+cambi di ampiezza, ecc.
+Sono globali, non appartengono a un soggetto
+b) Score FPC
+Per ogni finestra (o recording) ottieni dei numeri:
+“quanto questo segnale segue la FPC1, la FPC2, …”
+Questi cambiano:
+da finestra a finestra
+da recording a recording
+da soggetto a soggetto
+👉 Questi numeri sono le feature FDA
+3️⃣ EEGPT
+EEGPT:
+prende le stesse finestre EEG
+produce:
+embedding
+oppure direttamente probabilità di classe
+EEGPT è una scatola nera:
+non sai perché decide una classe
+sai solo quanto è sicuro
+🔑 L’IDEA DI INTERPRETAZIONE (questa è la chiave)
+Ci facciamo questa domanda:
+Quando EEGPT dice “classe X con alta probabilità”,
+quali modalità temporali del segnale stanno aumentando?
+Tradotto:
+EEGPT usa di più segnali con:
+oscillazioni lente?
+oscillazioni rapide?
+ampiezza alta?
+Queste cose sono esattamente ciò che catturano le FPC
+👉 Quindi:
+correlo gli score delle FPC con le probabilità EEGPT
+Se c’è correlazione:
+EEGPT non è magico
+sta sfruttando strutture temporali precise
 
 ---
 
